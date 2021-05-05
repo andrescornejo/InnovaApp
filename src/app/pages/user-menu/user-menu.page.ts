@@ -53,7 +53,7 @@ export class UserMenuPage implements OnInit {
   ) {
     //this.authService.curentUser.subscribe(elem => {
     this.user = this.authService.curentUser;
-    this.firebaseService.getUsers().valueChanges().subscribe(elem => {
+    let elem = this.firebaseService.getUsers();
       elem.forEach(element => {
         // console.log(element);
         if (element.Carnet === this.user.Carnet) {
@@ -61,7 +61,6 @@ export class UserMenuPage implements OnInit {
           this.authService.curentUser = this.user;
         }
       });
-    });
 
     console.log(this.user.Name);
 

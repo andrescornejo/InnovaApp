@@ -6,6 +6,7 @@ import { LoadingController } from '@ionic/angular';
 import { Router, RouterEvent, ActivatedRoute } from '@angular/router';
 import { FirebaseService, User } from '../../services/firebase.service';
 import { Observable } from 'rxjs';
+import { analytics } from 'firebase';
 
 @Component({
   selector: 'app-home',
@@ -58,8 +59,9 @@ export class HomePage {
   }
 
   login() {
+    let elem = this.firebaseService.getUsers();
     if (this.validateEmptyInputs()) {
-      this.firebaseService.getUsers().valueChanges().subscribe(elem => {
+      
         elem.forEach(element => {
           // console.log(element);
           if (element.Carnet === this.data.carnet) {
@@ -125,7 +127,6 @@ export class HomePage {
         //  console.log("USERR");
         //  console.log(this.user);
         // }
-      });
 
       // this.user = this.firebaseService.getUser(this.data.carnet).valueChanges();
       // this.user.subscribe(elem => {

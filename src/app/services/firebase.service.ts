@@ -27,10 +27,109 @@ export class FirebaseService {
   private users: any;
   private userCollection: any;
 
+  private users_arr = [
+    {
+      Rol: '1',
+      Name: 'Conductor',
+      Carnet: '2020',
+      Password: '123'
+    },
+    {
+      Rol: '2',
+      Name: 'Luis Rodríguez',
+      Carnet: '2010',
+      Password: '123',
+      Balance: -1500,
+      CardNumber: null,
+      CardBalance: 10000,
+      Location: 'Terminal'
+    },
+    {
+      Rol: '2',
+      Name: 'Diego Mendez',
+      Carnet: '2011',
+      Password: '123',
+      Balance: 600,
+      CardNumber: null,
+      CardBalance: 0,
+      Location: 'Terminal'
+    },
+    {
+      Rol: '2',
+      Name: 'Andrea Perez',
+      Carnet: '2012',
+      Password: '123',
+      Balance: 2000,
+      CardNumber: null,
+      CardBalance: 12000,
+      Location: 'Centro'
+    },
+    {
+      Rol: '2',
+      Name: 'María Salas',
+      Carnet: '2013',
+      Password: '123',
+      Balance: -1000,
+      CardNumber: null,
+      CardBalance: 1000,
+      Location: 'Florencia'
+    },
+    {
+      Rol: '2',
+      Name: 'Andrés Rojas',
+      Carnet: '2014',
+      Password: '123',
+      Balance: -100000,
+      CardNumber: null,
+      CardBalance: 200,
+      Location: 'Centro'
+    },
+    {
+      Rol: '2',
+      Name: 'Mario Solano',
+      Carnet: '2015',
+      Password: '123',
+      Balance: 1700,
+      CardNumber: null,
+      CardBalance: 0,
+      Location: 'Florencia'
+    },
+    {
+      Rol: '2',
+      Name: 'Kervin Sibaja',
+      Carnet: '2016',
+      Password: '123',
+      Balance: 1000,
+      CardNumber: null,
+      CardBalance: 0,
+      Location: 'Florencia'
+    },
+    {
+      Rol: '2',
+      Name: 'Andres Hernandez',
+      Carnet: '2017',
+      Password: '123',
+      Balance: 100,
+      CardNumber: null,
+      CardBalance: 12000,
+      Location: 'Centro'
+    },
+    {
+      Rol: '2',
+      Name: 'Ana Suarez',
+      Carnet: '2018',
+      Password: '123',
+      Balance: -700,
+      CardNumber: null,
+      CardBalance: 2000,
+      Location: 'Terminal'
+    },
+  ];
   constructor(
     private angularFirestore: AngularFirestore
   ) {
-    this.userCollection = this.angularFirestore.collection('users');
+    // this.userCollection = this.angularFirestore.collection('users');
+    this.userCollection = this.users_arr;
     /*
     this.users = this.userCollection.snapshotChanges().pipe(
       map(actions => {
@@ -60,6 +159,7 @@ export class FirebaseService {
     // return this.userCollection.doc(id);
   }
 
+  // Cambiamos a un usuario alambrado para poder llegar a las pantallas sin el firebase.
   validateUser(user: User, data: any) {
     if (data.carnet === user.Carnet) {
       if (data.password === user.Password) {
